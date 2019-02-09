@@ -36,7 +36,7 @@ def saveVideoOfBest(environment,weights):
             print('Farthest position',position)
             break
 
-for episode in range (0):
+for episode in range (1000):
         state = env.reset()
         done = False
         new_weight = np.random.uniform(-100,100,2)
@@ -59,6 +59,6 @@ for episode in range (0):
 
 #print('Farthest Position:',best_position,'Best Weight:',best_weight)
 
-saveVideoOfBest(env,np.array([-1.67662404, -83.55977291]))
+saveVideoOfBest(env,best_weight)
 
 env.close()

@@ -16,7 +16,7 @@ def chooseAction(s,w):
 def saveVideoOfBest(environment):
     finished = False
     count = 0
-    environment = wrappers.Monitor(environment,'BestOne',force = True)
+    environment = wrappers.Monitor(environment,'CartPole-Best',force = True)
     state = environment.reset()
     while not finished:
         count += 1
