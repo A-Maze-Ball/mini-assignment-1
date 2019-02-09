@@ -10,6 +10,9 @@ episode_steps = []
 
 best_weights = np.zeros(4)
 
+def chooseAction(s,w):
+    return 1 if np.dot(s, w) > 0 else 0
+
 def saveVideoOfBest(environment):
     finished = False
     count = 0
@@ -17,7 +20,8 @@ def saveVideoOfBest(environment):
     state = environment.reset()
     while not finished:
         count += 1
-        action = 1 if np.dot(state, best_weights) > 0 else 0
+        action = chooseAction(state, best_weights)
+        print('Action:',action,'State:',state,'Weight:',best_weights)
         state, reward, finished, debug = environment.step(action)
 
         if finished:
@@ -34,7 +38,7 @@ for i in range(1000):
     while not done:
         # environment.render()
         step_counter += 1
-        action = 1 if np.dot(state, new_weights) > 0 else 0
+        action = chooseAction(state, new_weights)
         state, reward, done, _ = environment.step(action)
 
         if done:
